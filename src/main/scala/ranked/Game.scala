@@ -5,7 +5,17 @@ import akka.persistence.{SaveSnapshotFailure, SaveSnapshotSuccess}
 
 import scala.reflect._
 
+object Game {
+  case class StartGame()
+  case class NewGoal(team: Team)
+  case class RequestCorrection(team: Team)
+  case class AbortGame()
+  case class PrintScore()
+}
+
 class Game extends PersistentFSM[State, Score, DomainEvent] {
+
+  import Game._
 
   override def persistenceId: String = context.self.path.toString
 

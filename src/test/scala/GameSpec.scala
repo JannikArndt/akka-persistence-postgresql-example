@@ -1,6 +1,7 @@
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.testkit.TestKit
 import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, Matchers}
+import ranked.Game._
 import ranked._
 
 import scala.util.Random
@@ -12,7 +13,6 @@ class GameSpec(_system: ActorSystem) extends TestKit(_system) with FlatSpecLike 
   override def afterAll(): Unit = {
     shutdown(system)
   }
-
 
   "A new Game" should "work as intended" in {
     val randomIdentifier = Random.nextInt()
